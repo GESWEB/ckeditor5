@@ -30,6 +30,9 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
+import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import SourceEditing from '@ckeditor/ckeditor5-source-editing/src/sourceediting';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -58,13 +61,18 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	WordCount,
+	Alignment,
+	SourceEditing,
 ];
 
 // Editor configuration.
 ClassicEditor.defaultConfig = {
 	toolbar: {
 		items: [
+			'sourceEditing',
+			'|',
 			'heading',
 			'|',
 			'bold',
@@ -72,6 +80,7 @@ ClassicEditor.defaultConfig = {
 			'link',
 			'bulletedList',
 			'numberedList',
+			'Alignment',
 			'|',
 			'outdent',
 			'indent',
@@ -81,7 +90,9 @@ ClassicEditor.defaultConfig = {
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
+			'redo',
+			'|',
+			'ckfinder',
 		]
 	},
 	image: {
@@ -101,6 +112,12 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
+	ckfinder: {
+		uploadUrl: '~/Desktop/Code/ckeditor5',
+		opnenerMethod: 'popup',
+	},
+
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'fr',
+	shouldNotGroupWhenFull: false,
 };
